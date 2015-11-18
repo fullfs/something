@@ -17,11 +17,11 @@ var go = function(name) {
 
 
 
-// console.time('launch1')
-// for (var i = 100000; i >= 0; i--) {
-//     go(one)
-// };
-// console.timeEnd('launch1')
+console.time('launch1')
+for (var i = 100000; i >= 0; i--) {
+    go(one)
+};
+console.timeEnd('launch1')
 
 
 

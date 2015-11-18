@@ -1,6 +1,6 @@
 var compare = function (what, expr) {
     var result = true;
-    if (expr === '*') {
+    if (!expr) {
         return result;
     }
 
@@ -44,12 +44,9 @@ var filter = function (messages, filters) {
         for (var name in messages) { 
             result[name] = result[name] || [];
 
-            filterFrom = (filters[i].from || '*').replace(/\*/g, '.+').replace(/\?/g, '.');
-            filterTo = (filters[i].to || '*').replace(/\*/g, '.+').replace(/\?/g, '.');
-
             if (
-                compare(messages[name].from, filters[i].from || '*') &&
-                compare(messages[name].to, filters[i].to || '*')
+                compare(messages[name].from, filters[i].from) &&
+                compare(messages[name].to, filters[i].to)
             ) {
                 result[name].push(filters[i].action);
             }
