@@ -1,3 +1,5 @@
+var cache = {};
+
 var compare = function (what, expr) {
     var result = true;
     if (!expr) {
