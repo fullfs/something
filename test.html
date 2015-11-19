@@ -1,12 +1,21 @@
 <script src="benchmark.js"></script>
-<script src="filter1.js"></script>
 <script src="filter2.js"></script>
+<script src="filter3.js"></script>
 
 <script type="text/javascript">
     var testCase = [{
         msg1: {from: 'jack@example.com', to: 'jill@example.org'},
         msg2: {from: 'noreply@spam.com', to: 'jill@example.org'},
         msg3: {from: 'boss@work.com', to: 'jack@example.com'},
+        msg4: {from: 'jack@example.com', to: 'jill@example.org'},
+        msg5: {from: 'noreply@spam.com', to: 'jill@example.org'},
+        msg6: {from: 'boss@work.com', to: 'jack@example.com'},
+        msg7: {from: 'jack@example.com', to: 'jill@example.org'},
+        msg8: {from: 'noreply@spam.com', to: 'jfg@fdsfsd.org'},
+        msg9: {from: 'boss@work.com', to: 'jack@example.com'},
+        msg10: {from: 'jack@example.com', to: 'jill@dddd.org'},
+        msg11: {from: 'noreply@spam.com', to: 'ddsa@ggfgdf.org'},
+        msg12: {from: 'boss@work.com', to: 'jack@example.com'}
     }, [
         {from: '*@work.com', action: 'tag work'},
         {from: '*@spam.com', action: 'tag spam'},
@@ -18,8 +27,8 @@
 
     // add tests
     suite
-        .add('Filter1', function() {
-            filter.apply(this, testCase);
+        .add('Filter3', function() {
+            filter3.apply(this, testCase);
         })
         .add('Filter2', function() {
             filter2.apply(this, testCase);

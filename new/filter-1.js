@@ -20,6 +20,10 @@ var compare = function (what, expr) {
 
         if (expr[i - gap] === '*') {
             stopper = expr[i - gap + 1];
+
+            if (stopper === undefined) {
+                break;
+            }
             continue;
         }
 

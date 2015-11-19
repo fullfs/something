@@ -41,7 +41,7 @@ var compare = function (what, expr) {
 }
 
 
-var filter2 = function (messages, filters) {
+var filter3 = function (messages, filters) {
     var result = {};
 
     for (var i = 0, l = filters.length; i < l; i++) {
