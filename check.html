@@ -1,1 +1,33 @@
-<script type="text/javascript" src="filter.js"></script>
+<script type="text/javascript" src="filter2.js"></script>
+
+<script type="text/javascript">
+    var testCase = [{
+        msg1: {from: 'jack@example.com', to: 'jill@example.org'},
+        msg2: {from: 'noreply@spam.com', to: 'jill@example.org'},
+        msg3: {from: 'boss@work.com', to: 'jack@example.com'}
+    }, [
+        {from: '*@work.com', action: 'tag work'},
+        {from: '*@spam.com', action: 'tag spam'},
+        {from: 'jack@example.com', to: 'jill@example.org', action: 'folder jack'},
+        {to: 'jill@example.org', action: 'forward to jill@elsewhere.com'}
+    ]]
+    var ok = filter2.apply(this, testCase);
+    var match = '{"msg1":["folder jack","forward to jill@elsewhere.com"],"msg2":["tag spam","forward to jill@elsewhere.com"],"msg3":["tag work"]}';
+    if (JSON.stringify(ok) == match) {
+        console.log('result is VALID');
+    } else {
+        console.log('result is INVALID');
+    }
+
+    var ok2 = filter2(
+        {
+           msg1: {from: 'jack@example.com', to: 'jill@example.org'}, 
+        },
+        [
+            {from: '?ack@example.com', action: 'tag work'},
+        ]
+    );
+
+
+    console.log(ok2)
+</script>

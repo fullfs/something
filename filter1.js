@@ -27,26 +27,3 @@ var filter = function (messages, filters) {
 
     return result;
 };
-
-
-var ok = filter({
-    msg1: {from: 'jack@example.com', to: 'jill@example.org'},
-    msg2: {from: 'noreply@spam.com', to: 'jill@example.org'},
-    msg3: {from: 'boss@work.com', to: 'jack@example.com'},
-    msg4: {from: 'gfdgdfgfd@ggg.com', to: 'gdf@example.com'}
-}, [
-    {from: '*@work.com', action: 'tag work'},
-    {from: '*@spam.com', action: 'tag spam'},
-    {from: 'jack@example.com', to: 'jill@example.org', action: 'folder jack'},
-    {to: 'jill@example.org', action: 'forward to jill@elsewhere.com'}
-])
-
-
-console.log(ok)
-
-
-// {
-//     msg1: ['folder jack', 'forward to jill@elsewhere.com'],
-//     msg2: ['tag spam', 'forward to jill@elsewhere.com'],
-//     msg3: ['tag work']
-// }

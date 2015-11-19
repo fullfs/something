@@ -1,0 +1,36 @@
+<script src="benchmark.js"></script>
+<script src="filter1.js"></script>
+<script src="filter2.js"></script>
+
+<script type="text/javascript">
+    var testCase = [{
+        msg1: {from: 'jack@example.com', to: 'jill@example.org'},
+        msg2: {from: 'noreply@spam.com', to: 'jill@example.org'},
+        msg3: {from: 'boss@work.com', to: 'jack@example.com'},
+    }, [
+        {from: '*@work.com', action: 'tag work'},
+        {from: '*@spam.com', action: 'tag spam'},
+        {from: 'jack@example.com', to: 'jill@example.org', action: 'folder jack'},
+        {to: 'jill@example.org', action: 'forward to jill@elsewhere.com'}
+    ]]
+
+    var suite = new Benchmark.Suite;
+
+    // add tests
+    suite
+        .add('Filter1', function() {
+            filter.apply(this, testCase);
+        })
+        .add('Filter2', function() {
+            filter2.apply(this, testCase);
+        })
+        // add listeners
+        .on('cycle', function(event) {
+          console.log(String(event.target));
+        })
+        .on('complete', function() {
+          console.log('Fastest is ' + this.filter('fastest').pluck('name'));
+        })
+        // run async
+        .run({ 'async': true });
+</script>
